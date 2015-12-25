@@ -37,5 +37,33 @@ public class Game {
 		}
 		return isHit;
 	}
+	
+	/*
+	 *  Displays current progress as a String of 
+	 *  '_'s corresponding to the chosen word with 
+	 *  correctly guessed letters filled in
+	 */
+	public String getCurrentProgress() {
+		
+		String progress = "";
+		
+		// break the answer String into a char array
+		
+		char[] answerArray = mAnswer.toCharArray();
+		
+		// if the mHits String contains the current
+		// char being iterated over, display that char
+		// else, display a '_'
+		for (char letter: answerArray) {
+			if (mHits.indexOf(letter) >= 0) {
+				progress += letter;
+			}
+			else {
+				progress += '-';
+			}
+		}
+		
+		return progress;
+	}
 
 }

@@ -19,7 +19,8 @@ public class Prompter {
 	public boolean promptForGuess() {
 		
 		// String guessAsString = scanner.nextLine();
-		System.out.println("Enter your guess: ");
+		
+		System.out.println("Enter new guess: ");
 		Scanner scan = new Scanner(System.in);
 		
 		// Scanner reads guess as a String so it has 
@@ -29,6 +30,10 @@ public class Prompter {
 		char guess = guessAsString.charAt(0);
 		
 		return mGame.applyGuess(guess);
+	}
+	
+	public void displayProgress() {
+		System.out.printf("Your current progress: %s\n", mGame.getCurrentProgress());
 	}
 
 }
