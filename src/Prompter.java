@@ -15,12 +15,20 @@ public class Prompter {
 		mGame = game;
 	}
 	
+	public void play() {
+		// play as long as there are guesses remaining
+		while (mGame.getRemainingTries() > 0) {
+			displayProgress();
+			promptForGuess();
+		}
+	}
+	
 	@SuppressWarnings("resource")
 	public boolean promptForGuess() {
 		
 		// String guessAsString = scanner.nextLine();
 		
-		System.out.println("Enter new guess: ");
+		System.out.print("Enter new letter: ");
 		Scanner scan = new Scanner(System.in);
 		
 		// Scanner reads guess as a String so it has 
@@ -33,7 +41,10 @@ public class Prompter {
 	}
 	
 	public void displayProgress() {
-		System.out.printf("Your current progress: %s\n", mGame.getCurrentProgress());
+		System.out.printf("Your current progress is %s\nyou have %d guesses left\n\n", 
+				mGame.getCurrentProgress(),
+				mGame.getRemainingTries()
+				);
 	}
 
 }

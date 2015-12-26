@@ -8,6 +8,7 @@
  */
 public class Game {
 	
+	public static final int MAX_MISSES = 7;
 	private String mAnswer;
 	private String mHits;
 	private String mMisses;
@@ -53,7 +54,7 @@ public class Game {
 		
 		// if the mHits String contains the current
 		// char being iterated over, display that char
-		// else, display a '_'
+		// else, display a '-'
 		for (char letter: answerArray) {
 			if (mHits.indexOf(letter) >= 0) {
 				progress += letter;
@@ -62,8 +63,11 @@ public class Game {
 				progress += '-';
 			}
 		}
-		
 		return progress;
+	}
+	
+	public int getRemainingTries() {
+		return MAX_MISSES - mMisses.length();
 	}
 
 }
