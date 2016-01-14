@@ -25,19 +25,32 @@ public class Prompter {
 	
 	@SuppressWarnings("resource")
 	public boolean promptForGuess() {
-		
-		// String guessAsString = scanner.nextLine();
-		
+	
 		System.out.print("Enter new letter: ");
 		Scanner scan = new Scanner(System.in);
+	
 		
-		// Scanner reads guess as a String so it has 
-		// to be converted to char since the applyGuess method
-		// takes guess of type char as input
-		String guessAsString = scan.nextLine();
-		char guess = guessAsString.charAt(0);
+		boolean isHit = false;
+		boolean isValidGuess = false;
 		
-		return mGame.applyGuess(guess);
+		// Keep prompting user until a valid guess is submitted
+		while (! isValidGuess) {
+			// Scanner reads guess as a String so it has 
+			// to be converted to char since the applyGuess method
+			// takes guess of type char as input
+			String guessAsString = scan.nextLine();
+			char guess = guessAsString.charAt(0);
+			
+			try {
+				// since applyGuess() can throw an exception
+				isHit = mGame.applyGuess(guess);
+				isValidGuess = true;	// if no exception thrown
+			} catch (IllegalArgumentException iae) {
+				System.out.println("Please try again");
+				System.out.println(iae.getMessage());
+			}
+		}
+		return isHit;
 	}
 	
 	public void displayProgress() {
