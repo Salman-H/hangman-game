@@ -39,11 +39,10 @@ public class Prompter {
 			// to be converted to char since the applyGuess method
 			// takes guess of type char as input
 			String guessAsString = scan.nextLine();
-			char guess = guessAsString.charAt(0);
 			
 			try {
 				// since applyGuess() can throw an exception
-				isHit = mGame.applyGuess(guess);
+				isHit = mGame.applyGuess(guessAsString);
 				isValidGuess = true;	// if no exception thrown
 			} catch (IllegalArgumentException iae) {
 				System.out.println("Please try again");

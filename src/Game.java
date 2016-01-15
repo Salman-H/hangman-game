@@ -49,6 +49,16 @@ public class Game {
 	}
 	
 	/*
+	 * 
+	 */
+	public boolean applyGuess(String letters) {
+		if (letters.length() == 0) {
+			throw new IllegalArgumentException("No letters found!");
+		}
+		return applyGuess(letters.charAt(0));
+	}
+	 
+	/*
 	 *  Takes the guessed letter and checks if the 
 	 *  answer for the current game contains that letter
 	 */
